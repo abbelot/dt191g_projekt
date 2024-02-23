@@ -13,10 +13,14 @@ namespace dt191g_projekt.Controllers
     public class PostController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly string wwwRootPath;
 
-        public PostController(ApplicationDbContext context)
+        public PostController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
+            wwwRootPath = hostEnvironment.WebRootPath; //path to images folder in wwwroot
         }
 
         // GET: Post
@@ -71,6 +75,24 @@ namespace dt191g_projekt.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Check if image exist in post
+                if (post.ImageFile != null)
+                {
+                    // Generate unique file name and save as ImageName
+                    string fileName = Path.GetFileNameWithoutExtension(post.ImageFile.FileName);
+                    string extension = Path.GetExtension(post.ImageFile.FileName);
+
+                    post.ImageName = fileName = fileName.Replace(" ", String.Empty) + DateTime.Now.ToString("yymmssfff") + extension;
+
+                    string path = Path.Combine(wwwRootPath + "/images", fileName);
+
+                    // Save in folder path
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await post.ImageFile.CopyToAsync(fileStream);
+                    }
+                }
+
                 _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -117,6 +139,23 @@ namespace dt191g_projekt.Controllers
             {
                 try
                 {
+                    // Check if image exist in post
+                    if (post.ImageFile != null)
+                    {
+                        // Generate unique file name and save as ImageName
+                        string fileName = Path.GetFileNameWithoutExtension(post.ImageFile.FileName);
+                        string extension = Path.GetExtension(post.ImageFile.FileName);
+
+                        post.ImageName = fileName = fileName.Replace(" ", String.Empty) + DateTime.Now.ToString("yymmssfff") + extension;
+
+                        string path = Path.Combine(wwwRootPath + "/images", fileName);
+
+                        // Save in folder path
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await post.ImageFile.CopyToAsync(fileStream);
+                        }
+                    }
                     _context.Update(post);
                     await _context.SaveChangesAsync();
                 }
