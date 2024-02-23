@@ -22,6 +22,11 @@ namespace dt191g_projekt.Controllers
         // GET: Post
         public async Task<IActionResult> Index()
         {
+            if (_context.Posts == null)
+            {
+                return NotFound();
+            }
+
             var applicationDbContext = _context.Posts.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -30,6 +35,11 @@ namespace dt191g_projekt.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (_context.Posts == null)
             {
                 return NotFound();
             }
@@ -73,6 +83,11 @@ namespace dt191g_projekt.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (_context.Posts == null)
             {
                 return NotFound();
             }
@@ -130,6 +145,11 @@ namespace dt191g_projekt.Controllers
                 return NotFound();
             }
 
+            if (_context.Posts == null)
+            {
+                return NotFound();
+            }
+
             var post = await _context.Posts
                 .Include(p => p.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -146,6 +166,12 @@ namespace dt191g_projekt.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
+            if (_context.Posts == null)
+            {
+                return NotFound();
+            }
+
             var post = await _context.Posts.FindAsync(id);
             if (post != null)
             {
@@ -158,6 +184,12 @@ namespace dt191g_projekt.Controllers
 
         private bool PostExists(int id)
         {
+
+            if (_context.Posts == null)
+            {
+                return false;
+            }
+
             return _context.Posts.Any(e => e.Id == id);
         }
     }

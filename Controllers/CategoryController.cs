@@ -22,6 +22,11 @@ namespace dt191g_projekt.Controllers
         // GET: Category
         public async Task<IActionResult> Index()
         {
+            if (_context.Categories == null)
+            {
+                return NotFound();
+            }
+
             return View(await _context.Categories.ToListAsync());
         }
 
@@ -29,6 +34,11 @@ namespace dt191g_projekt.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (_context.Categories == null)
             {
                 return NotFound();
             }
@@ -69,6 +79,11 @@ namespace dt191g_projekt.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
+            {
+                return NotFound();
+            }
+
+            if (_context.Categories == null)
             {
                 return NotFound();
             }
@@ -124,6 +139,11 @@ namespace dt191g_projekt.Controllers
                 return NotFound();
             }
 
+            if (_context.Categories == null)
+            {
+                return NotFound();
+            }
+
             var category = await _context.Categories
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (category == null)
@@ -139,6 +159,11 @@ namespace dt191g_projekt.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (_context.Categories == null)
+            {
+                return NotFound();
+            }
+
             var category = await _context.Categories.FindAsync(id);
             if (category != null)
             {
@@ -151,6 +176,10 @@ namespace dt191g_projekt.Controllers
 
         private bool CategoryExists(int id)
         {
+            if (_context.Categories == null)
+            {
+                return false;
+            }
             return _context.Categories.Any(e => e.Id == id);
         }
     }
