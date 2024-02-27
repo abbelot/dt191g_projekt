@@ -71,7 +71,7 @@ namespace dt191g_projekt.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Content,CreatedBy,ImageName,CategoryId")] Post post)
+        public async Task<IActionResult> Create([Bind("Id,Title,Content,CreatedBy,ImageFile,CategoryId")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -128,7 +128,7 @@ namespace dt191g_projekt.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,CreatedBy,ImageName,CategoryId")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,CreatedBy,ImageFile,CategoryId")] Post post)
         {
             if (id != post.Id)
             {
@@ -214,6 +214,20 @@ namespace dt191g_projekt.Controllers
             var post = await _context.Posts.FindAsync(id);
             if (post != null)
             {
+                if (!string.IsNullOrEmpty(post.ImageName))
+                {
+
+                    // Construct path to image file
+                    string imagePath = Path.Combine(wwwRootPath + "/images", post.ImageName);
+
+                    // Check if image exists
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        // Delete image
+                        System.IO.File.Delete(imagePath);
+                    }
+                }
+
                 _context.Posts.Remove(post);
             }
 
