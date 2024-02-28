@@ -1,0 +1,25 @@
+@model dt191g_projekt.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<h2>@Model.Title</h2>
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.ImageName))
+    {
+        <a href="~/images/@Model.ImageName" target="_blank">
+            <img src="~/images/@Model.ImageName" alt="" width="300px">
+        </a>
+    }
+    <p>@Html.DisplayFor(model => model.CreatedBy)</p>
+    <p>@Html.DisplayFor(model => model.CreatedDate)</p>
+    <p>@Html.DisplayFor(model => model.Content)</p>
+</div>
+
+<div>
+    <a asp-action="Index">Tillbaka</a>
+</div>

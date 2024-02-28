@@ -1,8 +1,30 @@
-﻿@{
+﻿@model IEnumerable<dt191g_projekt.Models.Post>
+
+@{
     ViewData["Title"] = "Start";
 }
 
 <div class="text-center">
     <h1 class="display-4">Välkommen till Prism ScienceHub administration!</h1>
-    <p><br>Det här är en sida för användare av Prism ScienceHub där du kan hantera inlägg rörande senaste nytt inom vetenskapen.</p>
+    <p><br>Det här är en sida för användare av Prism ScienceHub där du kan hantera inlägg rörande senaste nytt inom
+        vetenskapen.</p>
 </div>
+
+<h2>Nyheter</h2>
+
+@foreach (var post in Model)
+{
+    <div>
+        <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+            @if (!string.IsNullOrEmpty(post.ImageName))
+            {
+                <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
+            }
+            <p>@Html.DisplayFor(modelItem => post.Category.Name)</p>
+            <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
+        </a>
+        <p>@Html.DisplayFor(modelItem => post.Content)</p>
+        <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
+        <p>@Html.DisplayFor(modelItem => post.CreatedDate)</p>
+    </div>
+}
