@@ -21,6 +21,8 @@ public class Post
     [Display(Name = "Skapad av")]
     public string? CreatedBy { get; set; }
 
+    public DateTime CreatedDate { get; set; } = DateTime.Now;
+
     public string? ImageName { get; set; }
 
     [NotMapped]
