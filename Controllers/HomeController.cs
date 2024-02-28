@@ -27,6 +27,7 @@ public class HomeController : Controller
         return View(posts);
     }
 
+    [Route("/nyhet/{id}")]
     public async Task<IActionResult> Details(int? id)
     {
         if (id == null)

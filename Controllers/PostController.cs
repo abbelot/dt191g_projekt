@@ -24,6 +24,7 @@ namespace dt191g_projekt.Controllers
         }
 
         // GET: Post
+        [Route("/nyheter")]
         public async Task<IActionResult> Index()
         {
             if (_context.Posts == null)
@@ -36,6 +37,7 @@ namespace dt191g_projekt.Controllers
         }
 
         // GET: Post/Details/5
+        [Route("/nyheter/detaljer/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -60,6 +62,7 @@ namespace dt191g_projekt.Controllers
         }
 
         // GET: Post/Create
+        [Route("/nyheter/skapa-nyhet")]
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
@@ -69,6 +72,7 @@ namespace dt191g_projekt.Controllers
         // POST: Post/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Route("/nyheter/skapa-nyhet")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Content,CreatedBy,ImageFile,CategoryId")] Post post)
@@ -102,6 +106,7 @@ namespace dt191g_projekt.Controllers
         }
 
         // GET: Post/Edit/5
+        [Route("/nyheter/redigera/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -128,6 +133,7 @@ namespace dt191g_projekt.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("/nyheter/redigera/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,CreatedBy,ImageFile,CategoryId")] Post post)
         {
             if (id != post.Id)
@@ -177,6 +183,7 @@ namespace dt191g_projekt.Controllers
         }
 
         // GET: Post/Delete/5
+        [Route("/nyheter/radera/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -203,6 +210,7 @@ namespace dt191g_projekt.Controllers
         // POST: Post/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Route("/nyheter/radera/{id}")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
 
