@@ -17,6 +17,31 @@ public class HomeController : Controller
         _context = context;
     }
 
+    // Search news
+    [Route("/sok-nyhet")]
+    public IActionResult Search()
+    {
+        return View();
+    }
+
+    [Route("/sok-resultat")]
+    public async Task<IActionResult> SearchResults(string searchString)
+    {
+        // Search query
+        var posts = _context.Posts
+                    .Include(p => p.Category)
+                    .OrderBy(p => p.Title) as IQueryable<Post>;
+        
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            // Case insensitive search, either for post title or post category
+            posts = posts.Where(s => s.Title.ToLower().Contains(searchString.ToLower()) || s.Category.Name.ToLower().Contains(searchString.ToLower()));
+        }
+
+        ViewData["SearchString"] = searchString;
+        return View(await posts.ToListAsync());
+    }
+
     public async Task<IActionResult> Index()
     {
         if (_context.Posts == null)

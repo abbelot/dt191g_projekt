@@ -1,0 +1,24 @@
+@model dt191g_projekt.Models.Post;
+
+@{
+    ViewData["Title"] = "Sök nyhet";
+}
+
+<h1>Sök efter nyheter</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SearchResults" method="get">
+            <div class="form-group">
+                <label for="searchString" class="control-label">Sök efter nyhet</label>
+                <input type="text" class="form-control" id="searchString" name="searchString"
+                    placeholder="Ange sökning">
+            </div>
+            <button type="submit" class="btn btn-primary">Sök</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Tillbaka</a>
+</div>

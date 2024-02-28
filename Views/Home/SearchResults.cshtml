@@ -1,0 +1,36 @@
+@model IEnumerable<dt191g_projekt.Models.Post>
+
+@{
+    ViewData["Title"] = "Sökresultat";
+}
+
+<h1>Sökresultat</h1>
+
+@if (Model.Any())
+{
+<h2>Visar alla resultat av sökning: @ViewData["SearchString"]</h2>
+    @foreach (var post in Model)
+    {
+        <div>
+            <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+                @if (!string.IsNullOrEmpty(post.ImageName))
+                {
+                    <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
+                }
+                <p>@Html.DisplayFor(modelItem => post.Category.Name)</p>
+                <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
+            </a>
+            <p>@Html.DisplayFor(modelItem => post.Content)</p>
+            <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
+            <p>@Html.DisplayFor(modelItem => post.CreatedDate)</p>
+        </div>
+    }
+}
+else
+{
+    <p>Ingen nyhet matchade sökningen.</p>
+}
+
+<div>
+    <a asp-action="Index">Start</a> | <a asp-action="Search">Tillbaka</a>
+</div>
