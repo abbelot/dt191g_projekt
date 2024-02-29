@@ -15,6 +15,15 @@
             <img src="~/images/@Model.ImageName" alt="" width="300px">
         </a>
     }
+    <p>
+        @{
+            var categoryName = Model.Category?.Name;
+            if (!string.IsNullOrEmpty(categoryName))
+            {
+                @categoryName
+            }
+        }
+    </p>
     <p>@Html.DisplayFor(model => model.CreatedBy)</p>
     <p>@Html.DisplayFor(model => model.CreatedDate)</p>
     <p>@Html.DisplayFor(model => model.Content)</p>

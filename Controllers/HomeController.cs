@@ -27,6 +27,10 @@ public class HomeController : Controller
     [Route("/sok-resultat")]
     public async Task<IActionResult> SearchResults(string searchString)
     {
+        if (_context.Posts == null)
+        {
+            return NotFound();
+        }
         // Search query
         var posts = _context.Posts
                     .Include(p => p.Category)
@@ -34,8 +38,9 @@ public class HomeController : Controller
         
         if (!string.IsNullOrEmpty(searchString))
         {
+            searchString = searchString.ToLower();
             // Case insensitive search, either for post title or post category
-            posts = posts.Where(s => s.Title.ToLower().Contains(searchString.ToLower()) || s.Category.Name.ToLower().Contains(searchString.ToLower()));
+            posts = posts.Where(s => (s.Title != null && s.Title.ToLower().Contains(searchString)) || (s.Category != null && s.Category.Name != null && s.Category.Name.ToLower().Contains(searchString)));
         }
 
         ViewData["SearchString"] = searchString;

@@ -40,7 +40,13 @@
             @Html.DisplayNameFor(model => model.Category)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
+            @{
+                var categoryName = Model.Category?.Name;
+                if (!string.IsNullOrEmpty(categoryName))
+                {
+                    @categoryName
+                }
+            }
         </dd>
     </dl>
 </div>

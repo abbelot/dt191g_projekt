@@ -20,7 +20,13 @@
             {
                 <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
             }
-            <p>@Html.DisplayFor(modelItem => post.Category.Name)</p>
+            <p>
+                @if (post.Category != null)
+                {
+                    @Html.DisplayFor(modelItem => post.Category.Name)
+
+                }
+            </p>
             <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
         </a>
         <p>@Html.DisplayFor(modelItem => post.Content)</p>
