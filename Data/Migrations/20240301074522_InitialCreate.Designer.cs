@@ -11,7 +11,7 @@ using dt191g_projekt.Data;
 namespace dt191g_projekt.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240223105203_InitialCreate")]
+    [Migration("20240301074522_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -246,7 +246,9 @@ namespace dt191g_projekt.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CreatedBy")
-                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImageName")

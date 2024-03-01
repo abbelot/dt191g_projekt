@@ -17,7 +17,6 @@ public class Post
     [Display(Name = "Innehåll")]
     public string? Content { get; set; }
 
-    [Required]
     [Display(Name = "Skapad av")]
     public string? CreatedBy { get; set; }
 

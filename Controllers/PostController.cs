@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using dt191g_projekt.Data;
 using dt191g_projekt.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dt191g_projekt.Controllers
 {
@@ -75,7 +76,8 @@ namespace dt191g_projekt.Controllers
         [Route("/nyheter/skapa-nyhet")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Content,CreatedBy,ImageFile,CategoryId")] Post post)
+        [Authorize]
+        public async Task<IActionResult> Create([Bind("Id,Title,Content,ImageFile,CategoryId")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -98,11 +100,16 @@ namespace dt191g_projekt.Controllers
                 }
 
                 _context.Add(post);
+
+                // Add logged in user to CreatedBy
+                post.CreatedBy = User.Identity?.Name ?? "Unknown";
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name", post.CategoryId);
             return View(post);
+
         }
 
         // GET: Post/Edit/5
@@ -134,7 +141,7 @@ namespace dt191g_projekt.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("/nyheter/redigera/{id}")]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,CreatedBy,ImageFile,CategoryId")] Post post)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,ImageFile,CategoryId")] Post post)
         {
             if (id != post.Id)
             {
