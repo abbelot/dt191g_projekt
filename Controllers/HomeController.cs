@@ -54,7 +54,7 @@ public class HomeController : Controller
         {
             return NotFound();
         }
-        var posts = await _context.Posts.Include(p => p.Category).ToListAsync();
+        var posts = await _context.Posts.Include(p => p.Category).OrderByDescending(p => p.CreatedDate).ToListAsync();
         return View(posts);
     }
 
@@ -90,7 +90,7 @@ public class HomeController : Controller
         {
             return NotFound();
         }
-        var postsQuery = _context.Posts.Include(p => p.Category).AsNoTracking();
+        var postsQuery = _context.Posts.Include(p => p.Category).OrderByDescending(p => p.CreatedDate).AsNoTracking();
         var paginatedPosts = await PaginatedList<Post>.CreateAsync(postsQuery, pageNumber, pageSize);
         return View(paginatedPosts);
     }
