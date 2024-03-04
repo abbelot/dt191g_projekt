@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Start";
+    var culture = new System.Globalization.CultureInfo("sv-SE");
 }
 
 <div class="text-center">
@@ -31,6 +32,6 @@
         </a>
         <p>@Html.DisplayFor(modelItem => post.Content)</p>
         <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
-        <p>@Html.DisplayFor(modelItem => post.CreatedDate)</p>
+        <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
     </div>
 }

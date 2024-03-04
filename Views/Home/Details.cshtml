@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    var culture = new System.Globalization.CultureInfo("sv-SE");
 }
 
 <h1>Details</h1>
@@ -25,7 +26,7 @@
         }
     </p>
     <p>@Html.DisplayFor(model => model.CreatedBy)</p>
-    <p>@Html.DisplayFor(model => model.CreatedDate)</p>
+    <p>@Model.CreatedDate.ToString("d MMMM, yyyy kl HH:ss", culture)</p>
     <p>@Html.DisplayFor(model => model.Content)</p>
 </div>
 
