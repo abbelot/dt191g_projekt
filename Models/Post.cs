@@ -20,8 +20,10 @@ public class Post
     [Display(Name = "Skapad av")]
     public string? CreatedBy { get; set; }
 
+    [Display(Name = "Datum")]
     public DateTime CreatedDate { get; set; } = DateTime.Now;
 
+    [Display(Name = "Bild")]
     public string? ImageName { get; set; }
 
     [NotMapped]
