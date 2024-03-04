@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using dt191g_projekt.Data;
 using dt191g_projekt.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace dt191g_projekt.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ApplicationDbContext _context;
