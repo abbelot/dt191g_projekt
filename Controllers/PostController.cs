@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace dt191g_projekt.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,7 +27,6 @@ namespace dt191g_projekt.Controllers
 
         // GET: Post
         [Route("/nyheter")]
-        [Authorize]
         public async Task<IActionResult> Index()
         {
             if (_context.Posts == null)
@@ -65,7 +65,6 @@ namespace dt191g_projekt.Controllers
 
         // GET: Post/Create
         [Route("/nyheter/skapa-nyhet")]
-        [Authorize]
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
@@ -78,7 +77,6 @@ namespace dt191g_projekt.Controllers
         [Route("/nyheter/skapa-nyhet")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Title,Content,ImageFile,CategoryId")] Post post)
         {
             if (ModelState.IsValid)
@@ -116,7 +114,6 @@ namespace dt191g_projekt.Controllers
 
         // GET: Post/Edit/5
         [Route("/nyheter/redigera/{id}")]
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -144,7 +141,6 @@ namespace dt191g_projekt.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("/nyheter/redigera/{id}")]
-        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Content,ImageFile,CategoryId")] Post post)
         {
             if (id != post.Id)
@@ -195,7 +191,6 @@ namespace dt191g_projekt.Controllers
 
         // GET: Post/Delete/5
         [Route("/nyheter/radera/{id}")]
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -223,7 +218,6 @@ namespace dt191g_projekt.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Route("/nyheter/radera/{id}")]
-        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
 
