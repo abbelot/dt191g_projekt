@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using dt191g_projekt.Models;
 using dt191g_projekt.Data;
 using Microsoft.EntityFrameworkCore;
+using dt191g_projekt.Helpers;
 
 namespace dt191g_projekt.Controllers;
 
@@ -35,7 +36,7 @@ public class HomeController : Controller
         var posts = _context.Posts
                     .Include(p => p.Category)
                     .OrderBy(p => p.Title) as IQueryable<Post>;
-        
+
         if (!string.IsNullOrEmpty(searchString))
         {
             searchString = searchString.ToLower();
@@ -80,6 +81,18 @@ public class HomeController : Controller
         }
 
         return View(post);
+    }
+
+    [Route("/alla-nyheter")]
+    public async Task<IActionResult> AllNews(int pageNumber = 1, int pageSize = 10)
+    {
+        if (_context.Posts == null)
+        {
+            return NotFound();
+        }
+        var postsQuery = _context.Posts.Include(p => p.Category).AsNoTracking();
+        var paginatedPosts = await PaginatedList<Post>.CreateAsync(postsQuery, pageNumber, pageSize);
+        return View(paginatedPosts);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

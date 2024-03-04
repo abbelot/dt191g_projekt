@@ -1,0 +1,42 @@
+@model dt191g_projekt.Helpers.PaginatedList<dt191g_projekt.Models.Post>
+
+@{
+    ViewData["Title"] = "Alla nyheter";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var post in Model)
+{
+    <div>
+        <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+            @if (!string.IsNullOrEmpty(post.ImageName))
+            {
+                <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
+            }
+            <p>
+                @if (post.Category != null)
+                {
+                    @Html.DisplayFor(modelItem => post.Category.Name)
+
+                }
+            </p>
+            <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
+        </a>
+        <p>@Html.DisplayFor(modelItem => post.Content)</p>
+        <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
+        <p>@Html.DisplayFor(modelItem => post.CreatedDate)</p>
+    </div>
+}
+
+<!-- Pagination Controls -->
+<div>
+    @if (Model.HasPreviousPage)
+    {
+        <a class="btn btn-primary" asp-action="AllNews" asp-route-pageNumber="@(Model.PageIndex - 1)">Föregående</a>
+    }
+    @if (Model.HasNextPage)
+    {
+        <a class="btn btn-primary" asp-action="AllNews" asp-route-pageNumber="@(Model.PageIndex + 1)">Nästa</a>
+    }
+</div>
