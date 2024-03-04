@@ -6,39 +6,41 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Välkommen till Prism ScienceHub administration!</h1>
-    <p><br>Det här är en sida för användare av Prism ScienceHub där du kan hantera inlägg rörande senaste nytt inom
-        vetenskapen.</p>
+    <h1 class="display-4">Välkommen till Prism ScienceHub</h1>
+    <p><br>Läs de senaste nyheterna från vetenskapsvärlden.</p>
 </div>
 
-<h2>Nyheter</h2>
-
-@foreach (var post in Model)
+@if (Model.Any())
 {
-    <div>
-        <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
-            @if (!string.IsNullOrEmpty(post.ImageName))
-            {
-                <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
-            }
-            <p>
-                @if (post.Category != null)
-                {
-                    @Html.DisplayFor(modelItem => post.Category.Name)
+    <h2>Nyheter</h2>
 
+    @foreach (var post in Model)
+    {
+        <div>
+            <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+                @if (!string.IsNullOrEmpty(post.ImageName))
+                {
+                    <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
                 }
-            </p>
-            <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
-        </a>
-        <p>@if (post.Content?.Length > 125)
-            {
-                @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
-            }
-            else
-            {
-                @Html.DisplayFor(modelItem => post.Content)
-            }</p>
-        <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
-        <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
-    </div>
+                <p>
+                    @if (post.Category != null)
+                    {
+                        @Html.DisplayFor(modelItem => post.Category.Name)
+
+                    }
+                </p>
+                <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
+            </a>
+            <p>@if (post.Content?.Length > 125)
+                {
+                    @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => post.Content)
+                }</p>
+            <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
+            <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
+        </div>
+    }
 }
