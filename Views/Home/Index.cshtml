@@ -30,7 +30,14 @@
             </p>
             <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
         </a>
-        <p>@Html.DisplayFor(modelItem => post.Content)</p>
+        <p>@if (post.Content?.Length > 125)
+            {
+                @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => post.Content)
+            }</p>
         <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
         <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
     </div>
