@@ -9,3 +9,39 @@
 .active {
     @apply max-h-fit;
 }
+
+label {
+    @apply text-sm font-semibold block;
+}
+
+input {
+    @apply border rounded-sm;
+}
+
+.input-div {
+    @apply w-full my-0 mx-auto mb-4;
+}
+
+.input-div input {
+    @apply border rounded-sm w-full px-4 py-3;
+}
+
+.input-div label {
+    @apply opacity-80;
+}
+
+.input-div .text-danger {
+    @apply text-red-600 text-sm;
+}
+
+.input-div .input-validation-error {
+    @apply border-red-600 border-2 focus:outline-2 focus:outline-red-600;
+}
+
+.btn-styling {
+    @apply bg-btnColor text-white rounded-sm w-full my-4 py-2 text-lg hover:bg-btnHover duration-150;
+}
+
+.link-styling {
+    @apply text-mainColor underline font-semibold hover:text-textColor duration-150;
+}

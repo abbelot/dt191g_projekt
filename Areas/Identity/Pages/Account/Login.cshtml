@@ -5,36 +5,28 @@
     ViewData["Title"] = "Logga in";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-6">
-        <section>
-            <form id="account" method="post">
-                <h2>Logga in med befintligt konto</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Användarnamn" />
-                    <label asp-for="Input.Email" class="form-label">E-post/användarnamn</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Lösenord" />
-                    <label asp-for="Input.Password" class="form-label">Lösenord</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Logga in</button>
-                </div>
-                <div>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrera nytt konto</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-</div>
+<h1 class="text-2xl mb-6 text-center">@ViewData["Title"]</h1>
+<section class="grid w-full justify-items-center">
+    <form id="account" method="post" class="w-full max-w-lg">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="input-div">
+            <label asp-for="Input.Email">E-post/användarnamn</label>
+            <input asp-for="Input.Email" autocomplete="username" aria-required="true"
+                placeholder="Fyll i e-post eller användarnamn" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="input-div">
+            <label asp-for="Input.Password" class="form-label">Lösenord</label>
+            <input asp-for="Input.Password" autocomplete="current-password" aria-required="true"
+                placeholder="Lösenord" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <button id="login-submit" type="submit" class="btn-styling">Logga in</button>
+        <p class="text-sm mt-4">
+            Inget konto? <a class="link-styling" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrera dig här.</a>
+        </p>
+    </form>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
