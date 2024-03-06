@@ -10,7 +10,7 @@ module.exports = {
         'mainColor': '#225483',
         'btnColor': '#C35937',
         'btnHover': '#9F4529',
-        'textColor': '#374151',
+        'textColor': '#4b5563',
         'footerColor': '#31313B'
       },
       fontFamily: {
