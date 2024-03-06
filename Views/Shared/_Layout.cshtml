@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,42 +9,58 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/dt191g_projekt.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    @* Google fonts *@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&family=Karma:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Prism ScienceHub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Start</a>
+
+<body class="my-0 mx-auto font-body text-textColor flex flex-col grow min-h-screen">
+    <div class="w-full my-0 grow">
+        <header class="shadow w-full">
+            <div class="grid items-center w-full px-5 py-2.5 max-w-7xl my-0 mx-auto">
+                <a class="w-fit block col-start-1 row-start-1 tracking-[-0.08em] font-bold text-mainColor text-xl md:text-2xl lg:text-3xl"
+                    asp-area="" asp-controller="Home" asp-action="Index">Prism
+                    ScienceHub</a>
+                <button id="nav-toggle"
+                    class="col-start-1 row-start-1 bg-transparent border-none text-2xl cursor-pointer justify-self-end lg:hidden">&#9776;</button>
+                <nav id="nav-menu"
+                    class="w-full overflow-hidden lg:row-start-1 lg:col-span-2 lg:items-center lg:justify-between max-h-0 lg:max-h-fit">
+                    <ul class="p-0 m-0 list-none text-center lg:text-right lg:items-center">
+                        <li
+                            class="block py-5 px-2.5 text-textColor tracking-[-0.08em] font-semibold lg:inline-block lg:py-0">
+                            <a class="" asp-area="" asp-controller="Home" asp-action="Index">START</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AllNews">Alla nyheter</a>
+                        <li
+                            class="block py-5 px-2.5 text-textColor tracking-[-0.08em] font-semibold lg:inline-block lg:py-0">
+                            <a class="" asp-area="" asp-controller="Home" asp-action="AllNews">ALLA NYHETER</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Search">Sök nyhet</a>
+                        <li
+                            class="block py-5 px-2.5 text-textColor tracking-[-0.08em] lg:pr-0 font-semibold lg:inline-block lg:py-0">
+                            <a class="" asp-area="" asp-controller="Home" asp-action="Search">SÖK NYHET</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
-                </div>
+                </nav>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </header>
+        <div class="max-w-7xl w-full my-0 mx-auto px-5">
+            <partial name="_LoginPartial" />
+            <main role="main" class="pb-3 mt-8">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; Prism ScienceHub - Administration
+    <footer class="shrink-0 mt-auto mx-auto lg:mt-6 py-7 w-full bg-footerColor text-white">
+        <div class="max-w-7xl my-0 mx-auto px-5">
+            <a class="w-fit block tracking-[-0.08em] font-bold md:text-xl opacity-80 mb-5" asp-area="" asp-controller="Home"
+                asp-action="Index">Prism ScienceHub</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="" asp-controller="Home" asp-action="Search">Sök nyhet</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="Identity" asp-page="/Account/Login">Logga in</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="Identity" asp-page="/Account/Register">Registrera konto</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="" asp-controller="Home" asp-action="About">Om Prism ScienceHub</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -51,4 +68,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

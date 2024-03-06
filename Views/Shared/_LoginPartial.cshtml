@@ -2,30 +2,30 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="p-0 m-0 text-right list-none mt-1">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hej
-                @User.Identity?.Name!</a>
+        <li class="py-0 px-2.5 inline-block">
+            <a class="tracking-[-0.1em] text-sm" asp-area="" asp-controller="Post" asp-action="Index">NYHETER</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Post" asp-action="Index">Nyheter</a>
+        <li class="py-0 px-2.5 inline-block">
+            <a class="tracking-[-0.1em] text-sm" asp-area="" asp-controller="Category" asp-action="Index">KATEGORIER</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Kategorier</a>
+        <li class="py-0 px-2.5 inline-block">
+            <a class="tracking-[-0.1em] text-sm" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+                INSTÄLLNINGAR</a>
         </li>
-        <li class="nav-item">
+        <li class="py-0 px-2.5 inline-block">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
                 asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="nav-link btn btn-link text-dark">Logga ut</button>
+                <button type="submit" class="tracking-[-0.1em] text-sm">LOGGA UT</button>
             </form>
         </li>
     }
     else
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Logga in</a>
+        <li class="inline-block">
+            <a class="tracking-[-0.1em] text-sm py-1 px-2.5 rounded-sm text-white bg-btnColor hover:bg-btnHover duration-150" asp-area="Identity" asp-page="/Account/Login">LOGGA IN</a>
         </li>
     }
 </ul>
