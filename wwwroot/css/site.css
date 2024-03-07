@@ -6,16 +6,20 @@
     @apply box-border;
 }
 
+h1 {
+    @apply text-2xl mb-6 text-center;
+}
+
+h2 {
+    @apply text-lg mb-4;
+}
+
 .active {
     @apply max-h-fit;
 }
 
 label {
     @apply text-sm font-semibold block;
-}
-
-input {
-    @apply border rounded-sm;
 }
 
 .input-div {
@@ -44,4 +48,8 @@ input {
 
 .link-styling {
     @apply text-mainColor underline font-semibold hover:text-textColor duration-150;
+}
+
+.validation-summary-errors {
+    @apply text-sm font-semibold mb-4 text-red-600;
 }

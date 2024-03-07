@@ -38,13 +38,15 @@
             <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
             <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
         </div>
+        <div>
+            <a class="link-styling" asp-action="Index">Start</a> | <a class="link-styling" asp-action="Search">Tillbaka</a>
+        </div>
     }
 }
 else
 {
-    <p>Ingen nyhet matchade sökningen.</p>
+    <div class="max-w-lg mx-auto">
+        <p class="mb-4">Ingen nyhet matchade sökningen.</p>
+        <a class="link-styling" asp-action="Index">Start</a> | <a class="link-styling" asp-action="Search">Tillbaka</a>
+    </div>
 }
-
-<div>
-    <a asp-action="Index">Start</a> | <a asp-action="Search">Tillbaka</a>
-</div>

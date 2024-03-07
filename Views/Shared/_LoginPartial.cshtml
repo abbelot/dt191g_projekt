@@ -15,17 +15,17 @@
             <a class="tracking-[-0.1em] text-sm" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
                 INSTÄLLNINGAR</a>
         </li>
-        <li class="py-0 px-2.5 inline-block">
+        <li class="py-0 pl-2.5 inline-block">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
                 asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                <button type="submit" class="tracking-[-0.1em] text-sm">LOGGA UT</button>
+                <button type="submit" class="tracking-[-0.1em] text-sm py-0.5 px-2 rounded-sm text-white bg-btnColor hover:bg-btnHover duration-150">LOGGA UT</button>
             </form>
         </li>
     }
     else
     {
         <li class="inline-block">
-            <a class="tracking-[-0.1em] text-sm py-1 px-2.5 rounded-sm text-white bg-btnColor hover:bg-btnHover duration-150" asp-area="Identity" asp-page="/Account/Login">LOGGA IN</a>
+            <a class="tracking-[-0.1em] text-sm py-1 px-2.5 rounded-sm text-white bg-mainColor hover:bg-footerColor duration-150" asp-area="Identity" asp-page="/Account/Login">LOGGA IN</a>
         </li>
     }
 </ul>
