@@ -7,67 +7,69 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Skapa nyhet</a>
+    <a class="link-styling" asp-action="Create">Skapa nyhet</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="overflow-x-auto">
+    <table>
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @if (item.Content?.Length > 40)
-                    {
-                        @Html.Raw(Html.Encode(item.Content.Substring(0, 40)) + "...")
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.Content)
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedBy)
-                </td>
-                <td>
-                    @* Display image *@
-                    <a href="images/@Html.DisplayFor(modelItem => item.ImageName)" target="_blank">
-                        <img src="images/@Html.DisplayFor(modelItem => item.ImageName)" alt="" width="300px">
-                    </a>
-                </td>
-                <td>
-                    @if (item.Category != null)
-                    {
-                        @Html.DisplayFor(modelItem => item.Category.Name)
-                    }
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
-                </td>
+                <th class="w-[150px]">
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>
+                <th class="w-[150px]">
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageName)
+                </th>
+                <th class="w-[150px]">
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody class="w-full">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @if (item.Content?.Length > 40)
+                        {
+                            @Html.Raw(Html.Encode(item.Content.Substring(0, 40)) + "...")
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.Content)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @* Display image *@
+                        <a href="images/@Html.DisplayFor(modelItem => item.ImageName)" target="_blank">
+                            <img src="images/@Html.DisplayFor(modelItem => item.ImageName)" alt="" width="200px">
+                        </a>
+                    </td>
+                    <td>
+                        @if (item.Category != null)
+                        {
+                            @Html.DisplayFor(modelItem => item.Category.Name)
+                        }
+                    </td>
+                    <td>
+                        <a class="link-styling" asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
+                        <a class="link-styling" asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
+                        <a class="link-styling" asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
