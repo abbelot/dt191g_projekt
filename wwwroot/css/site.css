@@ -27,9 +27,17 @@ label {
 }
 
 .input-div input,
-.input-div textarea,
-.input-div select {
+.input-div textarea {
     @apply border rounded-sm w-full px-4 py-3;
+}
+
+.input-div select {
+    @apply border rounded-sm w-full px-4 py-3 cursor-pointer;
+}
+
+.input-div input[type='checkbox']
+{
+    @apply border rounded-sm w-fit;
 }
 
 .input-div label {
@@ -45,7 +53,7 @@ label {
 }
 
 .btn-styling {
-    @apply bg-btnColor text-white rounded-sm w-full my-4 py-2 text-lg hover:bg-btnHover duration-150;
+    @apply bg-btnColor text-white rounded-sm w-full my-4 py-2 text-lg hover:bg-btnHover duration-150 cursor-pointer;
 }
 
 .link-styling {

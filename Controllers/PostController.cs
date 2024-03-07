@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using dt191g_projekt.Data;
 using dt191g_projekt.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace dt191g_projekt.Controllers
 {
@@ -148,18 +149,53 @@ namespace dt191g_projekt.Controllers
                 return NotFound();
             }
 
+            if (_context.Posts == null)
+            {
+                return NotFound();
+            }
+
+            // Check if RemoveImage is true
+            var removeImage = Request.Form["RemoveImage"].Contains("true");
+
+            var existingPost = await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
+            if (existingPost == null)
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
-                    // Check if image exist in post
+                    existingPost.Title = post.Title;
+                    existingPost.Content = post.Content;
+                    existingPost.CategoryId = post.CategoryId;
+
+                    // Handle image removal from post and wwwroot/images
+                    if (existingPost.ImageName != null && removeImage)
+                    {
+                        // Construct path to image file
+                        string oldImagePath = Path.Combine(wwwRootPath + "/images", existingPost.ImageName);
+
+                        // Check if image exists
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            // Delete image
+                            System.IO.File.Delete(oldImagePath);
+                            existingPost.ImageName = null;
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+
+                    // If a new image is uploaded, process and save it
                     if (post.ImageFile != null)
                     {
                         // Generate unique file name and save as ImageName
                         string fileName = Path.GetFileNameWithoutExtension(post.ImageFile.FileName);
                         string extension = Path.GetExtension(post.ImageFile.FileName);
 
-                        post.ImageName = fileName = fileName.Replace(" ", String.Empty) + DateTime.Now.ToString("yymmssfff") + extension;
+                        fileName = fileName.Replace(" ", String.Empty) + DateTime.Now.ToString("yymmssfff") + extension;
+                        existingPost.ImageName = fileName;
 
                         string path = Path.Combine(wwwRootPath + "/images", fileName);
 
@@ -169,7 +205,6 @@ namespace dt191g_projekt.Controllers
                             await post.ImageFile.CopyToAsync(fileStream);
                         }
                     }
-                    _context.Update(post);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
