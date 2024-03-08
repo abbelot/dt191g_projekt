@@ -7,17 +7,16 @@
 
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <div asp-validation-summary="All" class="text-danger" role="alert"></div>
-        <div class="form-floating mb-3 input-group">
-            <input asp-for="Email" class="form-control" placeholder="Please enter your email." disabled />
-            <div class="input-group-append">
-                <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
-            </div>
-            <label asp-for="Email" class="form-label">E-post</label>
+<div>
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="input-div">
+        <label asp-for="Email">E-post</label>
+        <div class="relative md:max-w-sm">
+            <input asp-for="Email" class="md:max-w-sm bg-gray-100" placeholder="Please enter your email." disabled />
+            <span class="font-bold absolute top-[0.5px] right-[0.5px] py-3 px-6 bg-gray-200">✓</span>
         </div>
     </div>
+</div>
 </div>
 
 @section Scripts {

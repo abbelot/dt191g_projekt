@@ -2,7 +2,7 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<ul class="mb-8">
+<ul class="mb-4">
     <li class=""><a class="profile-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Användarnamn</a></li>
     <li class=""><a class="profile-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">E-post</a></li>
     <li class=""><a class="profile-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Lösenord</a></li>

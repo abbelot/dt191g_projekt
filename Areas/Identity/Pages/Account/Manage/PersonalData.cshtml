@@ -7,16 +7,14 @@
 
 <h3>@ViewData["Title"]</h3>
 
-<div class="row">
-    <div class="col-md-6">
-        <p>Ditt konto innehåller personlig data om dig. Här kan du radera ditt konto.</p>
-        <p>
-            <strong>Ditt konto kommer raderas permanent och kan inte återställas.</strong>
-        </p>
-        <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Radera konto</a>
-        </p>
-    </div>
+<div class="md:max-w-lg w-full">
+    <p>Ditt konto innehåller personlig data om dig. Här kan du radera ditt konto.</p>
+    <p class="my-5">
+        <strong>Ditt konto kommer raderas permanent och kan inte återställas.</strong>
+    </p>
+    <a id="delete" asp-page="DeletePersonalData"
+        class="md:max-w-sm block text-center text-white rounded-sm w-full my-6 px-7 py-2 text-lg bg-red-700 hover:bg-red-900 duration-150 cursor-pointer">Radera
+        konto</a>
 </div>
 
 @section Scripts {
