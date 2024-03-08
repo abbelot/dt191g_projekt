@@ -83,3 +83,15 @@ tbody {
 td {
     @apply break-words box-border p-3;
 }
+
+dl {
+    @apply flex flex-wrap justify-start md:gap-y-3 w-full mx-auto mt-6 break-words;
+}
+
+dt {
+    @apply flex-initial shrink-0 md:shrink w-full md:w-1/6 font-bold break-words;
+}
+
+dd {
+    @apply flex-initial shrink-0 md:shrink w-full md:w-5/6 mb-4 md:m-0 break-words;
+}

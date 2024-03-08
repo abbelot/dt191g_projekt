@@ -6,40 +6,40 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<h3>Är du säker på att du vill radera nyheten?</h3>
+<h2 class="font-bold">Är du säker på att du vill radera nyheten?</h2>
 <div>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
+    <dl>
+        <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Content)
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.CreatedBy)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.CreatedBy)
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.ImageName)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             <a href="~/images/@Model.ImageName" target="_blank">
                 <img src="~/images/@Model.ImageName" alt="" width="300px">
             </a>
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Category)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @{
                 var categoryName = Model.Category?.Name;
                 if (!string.IsNullOrEmpty(categoryName))
@@ -48,17 +48,17 @@
                 }
             }
         </dd>
-        <dt class="col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
-        <dd class="col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
     </dl>
 
-    <form asp-action="Delete">
+    <form asp-action="Delete" class="my-6">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Radera nyhet" class="btn btn-danger" /> |
-        <a asp-action="Index">Tillbaka</a>
+        <input type="submit" value="Radera nyhet" class="btn-styling max-w-full md:max-w-md" />
+        <a class="link-styling block w-fit" asp-action="Index">Tillbaka</a>
     </form>
 </div>
