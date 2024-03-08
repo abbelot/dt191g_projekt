@@ -4,8 +4,8 @@
     ViewData["Title"] = "Skapa nyhet";
 }
 
-<h1>@ViewData["Title"]</h1>
 <div class="grid w-full max-w-lg mx-auto justify-items-center">
+    <h1 class="justify-self-start">@ViewData["Title"]</h1>
     <form asp-action="Create" enctype="multipart/form-data" class="w-full">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="input-div">
@@ -27,7 +27,7 @@
             <label asp-for="CategoryId"></label>
             <select asp-for="CategoryId" asp-items="ViewBag.CategoryId"></select>
         </div>
-            <input type="submit" value="Lägg till" class="btn-styling" />
+        <input type="submit" value="Lägg till" class="btn-styling" />
     </form>
     <a class="link-styling justify-self-start" asp-action="Index">Tillbaka</a>
 </div>
