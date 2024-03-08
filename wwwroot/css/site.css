@@ -7,7 +7,7 @@
 }
 
 h1 {
-    @apply text-2xl mb-6 text-center;
+    @apply text-2xl mb-6 text-left;
 }
 
 h2 {

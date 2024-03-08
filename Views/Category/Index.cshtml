@@ -7,9 +7,9 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Skapa kategori</a>
+    <a class="link-styling" asp-action="Create">Skapa kategori</a>
 </p>
-<table class="table">
+<table class="overflow-x-auto">
     <thead>
         <tr>
             <th>
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                <a class="link-styling" asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
+                <a class="link-styling" asp-action="Details" asp-route-id="@item.Id">Detaljer</a> |
+                <a class="link-styling" asp-action="Delete" asp-route-id="@item.Id">Radera</a>
             </td>
         </tr>
 }

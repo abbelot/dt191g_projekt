@@ -7,17 +7,16 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl>
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> |
-    <a asp-action="Index">Tillbaka</a>
+<div class="my-8">
+    <a class="link-styling" asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> |
+    <a class="link-styling" asp-action="Index">Tillbaka</a>
 </div>

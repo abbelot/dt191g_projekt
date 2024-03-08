@@ -4,29 +4,22 @@
     ViewData["Title"] = "Skapa kategori";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Lägg till" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Tillbaka</a>
+<div class="grid w-full max-w-lg mx-auto justify-items-center">
+    <h1 class="justify-self-start">@ViewData["Title"]</h1>
+    <form asp-action="Create" class="w-full">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="input-div">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Lägg till" class="btn-styling" />
+    </form>
+    <a class="link-styling justify-self-start" asp-action="Index">Tillbaka</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

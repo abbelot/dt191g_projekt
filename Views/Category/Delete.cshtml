@@ -6,21 +6,21 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<h3>Är du säker på att du vill radera kategorin? Alla nyheter i kategorin kommer raderas.</h3>
+<h2 class="font-bold">Är du säker på att du vill radera kategorin? <br>Alla nyheter i kategorin kommer raderas.</h2>
 <div>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl>
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
     
-    <form asp-action="Delete">
+    <form asp-action="Delete" class="my-6">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Radera kategori" class="btn btn-danger" /> |
-        <a asp-action="Index">Tillbaka</a>
+        <input type="submit" value="Radera kategori" class="btn-styling max-w-full md:max-w-md" />
+        <a class="link-styling block w-fit" asp-action="Index">Tillbaka</a>
     </form>
 </div>
