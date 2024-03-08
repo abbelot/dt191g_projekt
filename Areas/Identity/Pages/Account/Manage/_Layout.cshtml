@@ -13,12 +13,11 @@
 
 <div>
     <h2>Ändra inställningar för din profil</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
+    <div class="md:grid md:grid-cols-5 gap-x-5 w-full mx-auto">
+        <div class="md:col-start-1 md:col-span-1">
             <partial name="_ManageNav" />
         </div>
-        <div class="col-md-9">
+        <div class="md:col-start-2 md:col-span-4">
             @RenderBody()
         </div>
     </div>

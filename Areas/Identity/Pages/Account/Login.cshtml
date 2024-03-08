@@ -5,9 +5,9 @@
     ViewData["Title"] = "Logga in";
 }
 
-<h1>@ViewData["Title"]</h1>
-<section class="grid w-full justify-items-center">
-    <form id="account" method="post" class="w-full max-w-lg">
+<section class="grid w-full justify-items-center max-w-lg mx-auto">
+    <h1 class="justify-self-start">@ViewData["Title"]</h1>
+    <form id="account" method="post" class="w-full">
         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
         <div class="input-div">
             <label asp-for="Input.Email">E-post/användarnamn</label>
@@ -23,7 +23,8 @@
         </div>
         <button id="login-submit" type="submit" class="btn-styling">Logga in</button>
         <p class="text-sm mt-4">
-            Inget konto? <a class="link-styling" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrera dig här.</a>
+            Inget konto? <a class="link-styling" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Registrera
+                dig här.</a>
         </p>
     </form>
 </section>

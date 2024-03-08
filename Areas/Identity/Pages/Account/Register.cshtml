@@ -4,28 +4,25 @@
     ViewData["Title"] = "Registrering";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<div class="grid w-full justify-items-center">
+<div class="grid w-full justify-items-center max-w-lg mx-auto">
+    <h1 class="justify-self-start">@ViewData["Title"]</h1>
     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="w-full max-w-lg">
         <h2>Registrera nytt användarkonto</h2>
         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
         <div class="input-div">
             <label asp-for="Input.UserName"></label>
-            <input asp-for="Input.UserName" autocomplete="off" aria-required="true"
-                placeholder="Ange användarnamn" />
+            <input asp-for="Input.UserName" autocomplete="off" aria-required="true" placeholder="Ange användarnamn" />
             <span asp-validation-for="Input.UserName" class="text-danger"></span>
         </div>
         <div class="input-div">
             <label asp-for="Input.Email"></label>
-            <input asp-for="Input.Email" autocomplete="email" aria-required="true"
-                placeholder="namn@exempel.com" />
+            <input asp-for="Input.Email" autocomplete="email" aria-required="true" placeholder="namn@exempel.com" />
             <span asp-validation-for="Input.Email" class="text-danger"></span>
         </div>
         <div class="input-div">
             <label asp-for="Input.Password"></label>
-            <input asp-for="Input.Password" autocomplete="new-password" aria-required="true"
-                placeholder="Lösenord" />
+            <input asp-for="Input.Password" autocomplete="new-password" aria-required="true" placeholder="Lösenord" />
             <span asp-validation-for="Input.Password" class="text-danger"></span>
         </div>
         <div class="input-div">

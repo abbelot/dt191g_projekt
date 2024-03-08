@@ -95,3 +95,15 @@ dt {
 dd {
     @apply flex-initial shrink-0 md:shrink w-full md:w-5/6 mb-4 md:m-0 break-words;
 }
+
+.profile-link {
+    @apply block py-1.5 px-2;
+}
+
+.profile-link:hover {
+    @apply bg-gray-200 duration-150 rounded-sm;
+}
+
+.profile-link[aria-current="page"] {
+    @apply bg-mainColor text-white rounded-sm w-full;
+}
