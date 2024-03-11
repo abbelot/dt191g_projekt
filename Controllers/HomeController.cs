@@ -54,7 +54,7 @@ public class HomeController : Controller
         {
             return NotFound();
         }
-        var posts = await _context.Posts.Include(p => p.Category).OrderByDescending(p => p.CreatedDate).ToListAsync();
+        var posts = await _context.Posts.Include(p => p.Category).OrderByDescending(p => p.CreatedDate).Take(5).ToListAsync();
         return View(posts);
     }
 
