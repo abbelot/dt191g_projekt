@@ -111,3 +111,41 @@ dd {
 .profile-link[aria-current="page"] {
     @apply bg-mainColor text-white rounded-sm w-full;
 }
+
+#home-section {
+    @apply lg:grid gap-x-5 lg:mt-4;
+    grid-template-columns: 70% 30%;
+}
+
+.home-article {
+    @apply border-b py-5 block col-start-1 col-span-2;
+}
+
+.home-article:first-of-type {
+    @apply block col-start-1 col-span-1 row-start-1 row-span-2 lg:border-r lg:pr-5;
+}
+
+.home-article:nth-of-type(2) {
+    @apply block col-start-2 row-start-1;
+}
+
+.home-article:nth-of-type(3) {
+    @apply block col-start-2 row-start-2;
+}
+
+.home-article h3 {
+    @apply mt-4;
+}
+
+.home-article:first-of-type img {
+    @apply object-cover md:h-[450px] max-w-none max-h-[250px] md:max-h-[450px] w-full;
+}
+
+.home-article:has(img) {
+    @apply border-b py-5 grid gap-x-3 md:gap-x-6;
+    grid-template-columns: fit-content(300px);
+}
+
+.home-article img {
+    @apply object-cover max-w-[300px] max-h-[300px] w-full;
+}

@@ -9,42 +9,44 @@
 
 @foreach (var post in Model)
 {
-    <div>
+    <div class="border-b py-5">
         <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
             @if (!string.IsNullOrEmpty(post.ImageName))
             {
                 <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
             }
-            <p>
+            <span class="uppercase text-xs font-bold tracking-tighter opacity-80 text-mainColor">
                 @if (post.Category != null)
                 {
                     @Html.DisplayFor(modelItem => post.Category.Name)
 
                 }
-            </p>
-            <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
+            </span>
+            <h3 class="font-bold font-heading hover:underline mt-4">@Html.DisplayFor(modelItem => post.Title)</h3>
+            <p>@if (post.Content?.Length > 125)
+                {
+                    @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => post.Content)
+                }</p>
+            <div class="mt-4">
+                <p class="text-sm font-semibold">Av @Html.DisplayFor(modelItem => post.CreatedBy) -
+                    @post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
+            </div>
         </a>
-        <p>@if (post.Content?.Length > 125)
-            {
-                @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
-            }
-            else
-            {
-                @Html.DisplayFor(modelItem => post.Content)
-            }</p>
-        <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
-        <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
     </div>
 }
 
 <!-- Pagination Controls -->
-<div>
+<div class="mt-4">
     @if (Model.HasPreviousPage)
     {
-        <a class="btn btn-primary" asp-action="AllNews" asp-route-pageNumber="@(Model.PageIndex - 1)">Föregående</a>
+        <a class="text-mainColor font-bold underline hover:text-textColor duration-150 text-sm rounded-sm mr-5" asp-action="AllNews" asp-route-pageNumber="@(Model.PageIndex - 1)">Föregående</a>
     }
     @if (Model.HasNextPage)
     {
-        <a class="btn btn-primary" asp-action="AllNews" asp-route-pageNumber="@(Model.PageIndex + 1)">Nästa</a>
+        <a class="text-mainColor font-bold underline hover:text-textColor duration-150 text-sm rounded-sm" asp-action="AllNews" asp-route-pageNumber="@(Model.PageIndex + 1)">Nästa</a>
     }
 </div>

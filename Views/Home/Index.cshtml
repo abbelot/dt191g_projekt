@@ -5,42 +5,53 @@
     var culture = new System.Globalization.CultureInfo("sv-SE");
 }
 
-<div class="text-center">
-    <h1 class="display-4">Välkommen till Prism ScienceHub</h1>
-    <p><br>Läs de senaste nyheterna från vetenskapsvärlden.</p>
+<div class="text-left md:text-center">
+    <h1 class="md:text-center">Välkommen till Prism ScienceHub</h1>
+    <p>Läs de senaste nyheterna från vetenskapsvärlden.</p>
 </div>
 
-@if (Model.Any())
-{
-    <h2>Nyheter</h2>
+<hr class="mt-8">
 
-    @foreach (var post in Model)
+<section id="home-section">
+    @if (Model.Any())
     {
-        <div>
-            <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
-                @if (!string.IsNullOrEmpty(post.ImageName))
-                {
-                    <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
-                }
-                <p>
-                    @if (post.Category != null)
-                    {
-                        @Html.DisplayFor(modelItem => post.Category.Name)
+        @foreach (var post in Model)
+        {
+            <div class="home-article">
+                <a class="w-fit" asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+                    <div class="relative w-full">
+                        @if (!string.IsNullOrEmpty(post.ImageName))
+                        {
+                            <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="">
+                        }
+                    </div>
+                </a>
+                <div class="col-start-2">
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+                        <span class="uppercase text-xs font-bold tracking-tighter opacity-80 text-mainColor">
+                            @if (post.Category != null)
+                            {
+                                @Html.DisplayFor(modelItem => post.Category.Name)
 
-                    }
-                </p>
-                <h3>@Html.DisplayFor(modelItem => post.Title)</h3>
-            </a>
-            <p>@if (post.Content?.Length > 125)
-                {
-                    @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
-                }
-                else
-                {
-                    @Html.DisplayFor(modelItem => post.Content)
-                }</p>
-            <p>@Html.DisplayFor(modelItem => post.CreatedBy)</p>
-            <p>@post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
-        </div>
+                            }
+                        </span>
+                        <h3 class="font-bold font-heading hover:underline w-fit">@Html.DisplayFor(modelItem => post.Title)
+                        </h3>
+                    </a>
+                    <p>@if (post.Content?.Length > 125)
+                        {
+                            @Html.Raw(Html.Encode(post.Content.Substring(0, 125)) + "...")
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => post.Content)
+                        }</p>
+                    <div class="mt-4">
+                        <p class="text-xs font-semibold">Av @Html.DisplayFor(modelItem => post.CreatedBy) -
+                            @post.CreatedDate.ToString("d MMMM, yyyy", culture)</p>
+                    </div>
+                </div>
+            </div>
+        }
     }
-}
+</section>

@@ -5,31 +5,31 @@
     var culture = new System.Globalization.CultureInfo("sv-SE");
 }
 
-<h1>Details</h1>
 
-<h2>@Model.Title</h2>
-
-<div>
+<div class="max-w-[55rem] text-center mx-auto grid justify-items-center">
+    <div class="text-left justify-self-start">
+        <span
+            class="uppercase text-md text-white font-bold tracking-tighter bg-mainColor rounded-sm px-2 py-0.5">
+            @{
+                var categoryName = Model.Category?.Name;
+                if (!string.IsNullOrEmpty(categoryName))
+                {
+                    @categoryName
+                }
+            }
+        </span>
+        <h1 class="font-bold font-heading w-fit mt-4">@Model.Title</h1>
+    </div>
     @if (!string.IsNullOrEmpty(Model.ImageName))
     {
         <a href="~/images/@Model.ImageName" target="_blank">
-            <img src="~/images/@Model.ImageName" alt="" width="300px">
+            <img class="object-fit max-w-[700px] max-h-[500px] w-full" src="~/images/@Model.ImageName" alt="">
         </a>
     }
-    <p>
-        @{
-            var categoryName = Model.Category?.Name;
-            if (!string.IsNullOrEmpty(categoryName))
-            {
-                @categoryName
-            }
-        }
-    </p>
-    <p>@Html.DisplayFor(model => model.CreatedBy)</p>
-    <p>@Model.CreatedDate.ToString("d MMMM, yyyy kl HH:ss", culture)</p>
-    <p>@Html.DisplayFor(model => model.Content)</p>
-</div>
-
-<div>
-    <a asp-action="Index">Tillbaka</a>
+    <div class="text-left mt-8 mb-6 justify-self-start">
+        <p class="my-3 font-bold">Av @Html.DisplayFor(model => model.CreatedBy)</p>
+        <p class="text-sm font-bold my-3">@Model.CreatedDate.ToString("d MMMM, yyyy kl HH:ss", culture)</p>
+        <p class="mt-8">@Html.DisplayFor(model => model.Content)</p>
+    </div>
+    <a class="my-6 underline text-mainColor font-semibold justify-self-start" asp-action="Index">Tillbaka</a>
 </div>
