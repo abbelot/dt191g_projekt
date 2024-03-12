@@ -52,7 +52,7 @@ namespace dt191g_projekt.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Fyll i nuvarande lösenord")]
             [DataType(DataType.Password)]
             [Display(Name = "Nuvarande lösenord")]
             public string OldPassword { get; set; }
@@ -61,7 +61,7 @@ namespace dt191g_projekt.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
+            [Required(ErrorMessage = "Fyll i nytt lösenord")]
             [StringLength(100, ErrorMessage = "{0}et måste vara minst {2} och max {1} tecken långt.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Nytt lösenord")]
