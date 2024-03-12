@@ -100,4 +100,10 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+    [Route("/om-sidan")]
+    public IActionResult About()
+    {
+        return View();
+    }
 }
