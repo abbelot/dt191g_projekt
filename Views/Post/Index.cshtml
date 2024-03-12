@@ -53,9 +53,17 @@
                     </td>
                     <td>
                         @* Display image *@
-                        <a href="images/@Html.DisplayFor(modelItem => item.ImageName)" target="_blank">
-                            <img src="images/@Html.DisplayFor(modelItem => item.ImageName)" alt="" width="200px">
-                        </a>
+                        @if (!string.IsNullOrEmpty(item.ImageName))
+                        {
+                            <a href="images/@Html.DisplayFor(modelItem => item.ImageName)" target="_blank">
+                                <img src="images/@Html.DisplayFor(modelItem => item.ImageName)" alt="@item.ImageName"
+                                    width="200px">
+                            </a>
+                        }
+                        else
+                        {
+                            <p>-</p>
+                        }
                     </td>
                     <td>
                         @if (item.Category != null)

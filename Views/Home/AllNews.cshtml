@@ -6,6 +6,7 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<h2>Visar alla vetenskapliga nyheter</h2>
 
 @foreach (var post in Model)
 {
@@ -13,7 +14,7 @@
         <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
             @if (!string.IsNullOrEmpty(post.ImageName))
             {
-                <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="" width="300px">
+                <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="@post.ImageName" width="300px">
             }
             <span class="uppercase text-xs font-bold tracking-tighter opacity-80 text-mainColor">
                 @if (post.Category != null)

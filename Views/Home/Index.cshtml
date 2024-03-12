@@ -7,7 +7,7 @@
 
 <div class="text-left md:text-center">
     <h1 class="md:text-center">Välkommen till Prism ScienceHub</h1>
-    <p>Läs de senaste nyheterna från vetenskapsvärlden.</p>
+    <h2>Läs de senaste nyheterna från vetenskapsvärlden.</h2>
 </div>
 
 <hr class="mt-8">
@@ -18,16 +18,16 @@
         @foreach (var post in Model)
         {
             <div class="home-article">
-                <a class="w-fit" asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+                <a class="w-fit" title="@post.Title" asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
                     <div class="relative w-full">
                         @if (!string.IsNullOrEmpty(post.ImageName))
                         {
-                            <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="">
+                            <img src="images/@Html.DisplayFor(modelItem => post.ImageName)" alt="@post.ImageName">
                         }
                     </div>
                 </a>
                 <div class="col-start-2">
-                    <a asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
+                    <a title="@post.Title" asp-controller="Home" asp-action="Details" asp-route-id="@post.Id">
                         <span class="uppercase text-xs font-bold tracking-tighter opacity-80 text-mainColor">
                             @if (post.Category != null)
                             {
