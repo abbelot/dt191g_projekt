@@ -77,16 +77,6 @@ namespace dt191g_projekt.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            RequirePassword = await _userManager.HasPasswordAsync(user);
-            if (RequirePassword)
-            {
-                if (!await _userManager.CheckPasswordAsync(user, Input.Password))
-                {
-                    ModelState.AddModelError(string.Empty, "Incorrect password.");
-                    return Page();
-                }
-            }
-
             var result = await _userManager.DeleteAsync(user);
             var userId = await _userManager.GetUserIdAsync(user);
             if (!result.Succeeded)
