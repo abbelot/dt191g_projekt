@@ -133,6 +133,11 @@ dd {
     @apply block col-start-2 row-start-2;
 }
 
+.home-article:nth-of-type(2) .content-text,
+.home-article:nth-of-type(3) .content-text {
+    @apply lg:hidden;
+}
+
 .home-article h3 {
     @apply mt-4;
 }
@@ -142,10 +147,10 @@ dd {
 }
 
 .home-article:has(img) {
-    @apply border-b py-5 grid gap-x-3 md:gap-x-6;
+    @apply border-b py-5 block lg:grid gap-x-3 lg:gap-x-6;
     grid-template-columns: fit-content(300px);
 }
 
 .home-article img {
-    @apply object-cover max-w-[300px] max-h-[300px] w-full;
+    @apply object-cover lg:max-w-[300px] lg:max-h-[200px] max-h-[300px] lg:w-[300px] lg:h-[200px] w-full mx-auto lg:mx-0;
 }
