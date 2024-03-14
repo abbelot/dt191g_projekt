@@ -10,4 +10,7 @@ Det finns en publik del där besökare kan läsa nyheter och söka efter nyheter
 och sin egen profil. Nya användare kan registrera sig med användarnamn och e-postadress vilka kan användas för att logga in.
 
 
+Väl inloggad kan användare lägga till, ändra och radera kategorier och nyheter. Det går även att ändra användarnamn, lösenord eller ta bort sitt konto.
+
+
 Till varje nyhet går det att ladda upp en bild, ändra bild till nyhet eller ta bort en bild. 
