@@ -56,8 +56,7 @@
                         @if (!string.IsNullOrEmpty(item.ImageName))
                         {
                             <a href="images/@Html.DisplayFor(modelItem => item.ImageName)" target="_blank">
-                                <img src="images/@Html.DisplayFor(modelItem => item.ImageName)" alt="@item.ImageName"
-                                    width="200px">
+                                <img class="admin-image" src="images/@Html.DisplayFor(modelItem => item.ImageName)" alt="@item.ImageName">
                             </a>
                         }
                         else

@@ -55,7 +55,7 @@
         </header>
         <div class="max-w-7xl w-full my-0 mx-auto px-5">
             <partial name="_LoginPartial" />
-            <main role="main" class="pb-3 mt-8">
+            <main class="pb-3 mt-8">
                 @RenderBody()
             </main>
         </div>
@@ -76,7 +76,6 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

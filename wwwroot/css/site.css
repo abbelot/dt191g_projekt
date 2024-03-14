@@ -154,3 +154,11 @@ dd {
 .home-article img {
     @apply object-cover lg:max-w-[300px] lg:max-h-[200px] max-h-[300px] lg:w-[300px] lg:h-[200px] w-full mx-auto lg:mx-0;
 }
+
+.news-image {
+    @apply max-w-[300px];
+}
+
+.admin-image {
+    @apply max-w-[150px];
+}
