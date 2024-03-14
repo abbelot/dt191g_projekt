@@ -1,11 +1,15 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] | Prism Sciencehub</title>
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    @* Favicon *@
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/dt191g_projekt.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
@@ -59,12 +63,16 @@
 
     <footer class="shrink-0 mt-auto mx-auto lg:mt-6 py-7 w-full bg-footerColor text-white">
         <div class="max-w-7xl my-0 mx-auto px-5">
-            <a class="w-fit block tracking-[-0.08em] font-bold md:text-xl opacity-80 mb-5" asp-area="" asp-controller="Home"
-                asp-action="Index">Prism ScienceHub</a>
-            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="" asp-controller="Home" asp-action="Search">Sök nyhet</a>
-            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="Identity" asp-page="/Account/Login">Logga in</a>
-            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="Identity" asp-page="/Account/Register">Registrera konto</a>
-            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="" asp-controller="Home" asp-action="About">Om Prism ScienceHub</a>
+            <a class="w-fit block tracking-[-0.08em] font-bold md:text-xl opacity-80 mb-5" asp-area=""
+                asp-controller="Home" asp-action="Index">Prism ScienceHub</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area=""
+                asp-controller="Home" asp-action="Search">Sök nyhet</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="Identity"
+                asp-page="/Account/Login">Logga in</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area="Identity"
+                asp-page="/Account/Register">Registrera konto</a>
+            <a class="w-fit block opacity-50 my-2 hover:opacity-80 duration-150 tracking-tighter" asp-area=""
+                asp-controller="Home" asp-action="About">Om Prism ScienceHub</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
